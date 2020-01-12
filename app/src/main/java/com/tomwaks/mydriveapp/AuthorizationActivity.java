@@ -9,6 +9,7 @@ import android.animation.ObjectAnimator;
 import android.annotation.SuppressLint;
 import android.annotation.TargetApi;
 import android.app.KeyguardManager;
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.hardware.fingerprint.FingerprintManager;
@@ -17,6 +18,7 @@ import android.os.Bundle;
 import android.security.keystore.KeyGenParameterSpec;
 import android.security.keystore.KeyPermanentlyInvalidatedException;
 import android.security.keystore.KeyProperties;
+import android.util.Log;
 import android.view.animation.Animation;
 import android.widget.TextView;
 

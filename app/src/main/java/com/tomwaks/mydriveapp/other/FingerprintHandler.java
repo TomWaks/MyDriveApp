@@ -4,11 +4,16 @@ import android.animation.ObjectAnimator;
 import android.annotation.TargetApi;
 import android.app.Activity;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Color;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.CancellationSignal;
+import android.os.Handler;
 import android.widget.TextView;
+
+import com.tomwaks.mydriveapp.AuthorizationActivity;
+import com.tomwaks.mydriveapp.MainActivity;
 import com.tomwaks.mydriveapp.R;
 
 @TargetApi(Build.VERSION_CODES.M)
@@ -16,6 +21,7 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
 
     private Context context;
     private ObjectAnimator ani;
+    private Handler mHandler = new Handler();
 
     public FingerprintHandler(Context context, ObjectAnimator ani){
 
@@ -61,5 +67,11 @@ public class FingerprintHandler extends FingerprintManager.AuthenticationCallbac
         this.ani.cancel();
         tv_info.setTextColor(Color.GREEN);
 
+        Intent intent = new Intent(this.context, MainActivity.class);
+        context.startActivity(intent);
+
+
+
     }
+
 }

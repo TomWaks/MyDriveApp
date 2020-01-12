@@ -8,11 +8,7 @@ import android.graphics.Color;
 import android.hardware.fingerprint.FingerprintManager;
 import android.os.Build;
 import android.os.CancellationSignal;
-import android.widget.ImageView;
 import android.widget.TextView;
-
-import androidx.core.content.ContextCompat;
-
 import com.tomwaks.mydriveapp.R;
 
 @TargetApi(Build.VERSION_CODES.M)

@@ -57,51 +57,54 @@ public class AuthorizationActivity extends AppCompatActivity {
 
         TextView myText = findViewById(R.id.tv_info);
 
-        ani = ObjectAnimator.ofInt(myText, "textColor", Color.rgb(255, 255, 255), Color.rgb(34, 34, 34));
-        ani.setDuration(700);
-        ani.setEvaluator(new ArgbEvaluator());
-        ani.setRepeatMode(Animation.REVERSE);
-        ani.setRepeatCount(Animation.INFINITE);
-        ani.start();
+        Intent intent = new Intent(AuthorizationActivity.this, MainActivity.class);
+        this.startActivity(intent);
 
-
-        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
-
-            fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
-            keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
-
-            if (!fingerprintManager.isHardwareDetected()) {
-
-                myText.setText("Fingerprint Scanner not detected in Device");
-
-            } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
-
-                myText.setText("Permission not granted to use Fingerprint Scanner");
-
-            } else if (!keyguardManager.isKeyguardSecure()) {
-
-                myText.setText("Add Lock to your Phone in Settings");
-
-            } else if (!fingerprintManager.hasEnrolledFingerprints()) {
-
-                myText.setText("You should add atleast 1 Fingerprint to use this Feature");
-
-            } else {
-
-                myText.setText("use your fingerprint sensor");
-
-                generateKey();
-
-                if (cipherInit()) {
-
-                    FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
-                    FingerprintHandler fingerprintHandler = new FingerprintHandler(this, ani);
-                    fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
-
-                }
-            }
-
-        }
+//        ani = ObjectAnimator.ofInt(myText, "textColor", Color.rgb(255, 255, 255), Color.rgb(34, 34, 34));
+//        ani.setDuration(700);
+//        ani.setEvaluator(new ArgbEvaluator());
+//        ani.setRepeatMode(Animation.REVERSE);
+//        ani.setRepeatCount(Animation.INFINITE);
+//        ani.start();
+//
+//
+//        if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+//
+//            fingerprintManager = (FingerprintManager) getSystemService(FINGERPRINT_SERVICE);
+//            keyguardManager = (KeyguardManager) getSystemService(KEYGUARD_SERVICE);
+//
+//            if (!fingerprintManager.isHardwareDetected()) {
+//
+//                myText.setText("Fingerprint Scanner not detected in Device");
+//
+//            } else if (ContextCompat.checkSelfPermission(this, Manifest.permission.USE_FINGERPRINT) != PackageManager.PERMISSION_GRANTED) {
+//
+//                myText.setText("Permission not granted to use Fingerprint Scanner");
+//
+//            } else if (!keyguardManager.isKeyguardSecure()) {
+//
+//                myText.setText("Add Lock to your Phone in Settings");
+//
+//            } else if (!fingerprintManager.hasEnrolledFingerprints()) {
+//
+//                myText.setText("You should add atleast 1 Fingerprint to use this Feature");
+//
+//            } else {
+//
+//                myText.setText("use your fingerprint sensor");
+//
+//                generateKey();
+//
+//                if (cipherInit()) {
+//
+//                    FingerprintManager.CryptoObject cryptoObject = new FingerprintManager.CryptoObject(cipher);
+//                    FingerprintHandler fingerprintHandler = new FingerprintHandler(this, ani);
+//                    fingerprintHandler.startAuth(fingerprintManager, cryptoObject);
+//
+//                }
+//            }
+//
+//        }
 
     }
 
